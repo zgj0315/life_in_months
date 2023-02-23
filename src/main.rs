@@ -10,7 +10,6 @@ fn main() {
     }
     let year_start: i32 = args[1][..4].parse().unwrap();
     let month_start: u32 = args[1][4..].parse().unwrap();
-    println!("year: {}, month: {}", year_start, month_start);
     let local = Local::now();
     let year_now = local.year();
     let month_now = local.month();
@@ -25,7 +24,13 @@ fn main() {
             } else {
                 print!("  ");
             }
-            if year < year_now {
+            if year == year_start {
+                if month < month_start {
+                    print!("O");
+                } else {
+                    print!("X");
+                }
+            } else if year < year_now {
                 print!("X");
             } else if year == year_now {
                 if month < month_now {
